@@ -61,3 +61,62 @@ function setDestination(latitude, longitude) {
     chosenDestination = { lat: latitude, lng: longitude };
     alert("Destination set! Now click 'Get Directions'.");
 }
+// Function to get user's current location
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            currentLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            const userMarker = new google.maps.Marker({
+                position: currentLocation,
+                map: mapInstance,
+                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            });
+
+            mapInstance.setCenter(currentLocation);
+        });
+    }
+}
+// Function to get user's current location
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            currentLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            const userMarker = new google.maps.Marker({
+                position: currentLocation,
+                map: mapInstance,
+                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            });
+
+            mapInstance.setCenter(currentLocation);
+        });
+    }
+}
+// Function to get user's current location
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            currentLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            const userMarker = new google.maps.Marker({
+                position: currentLocation,
+                map: mapInstance,
+                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            });
+
+            mapInstance.setCenter(currentLocation);
+        });
+    }
+}
+
+
