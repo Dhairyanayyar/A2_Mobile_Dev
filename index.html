@@ -20,5 +20,15 @@
             <p class="lead text-muted">Discover parks, museums, falls, and other hidden gems around the city!</p>
         </header>
 
+                <!-- Filter Buttons -->
+                <div class="d-flex justify-content-center flex-wrap map-buttons">
+                    <button class="btn btn-lg btn-info shadow" onclick="filterMarkers('parks')">Parks</button>
+                    <button class="btn btn-lg btn-success shadow" onclick="filterMarkers('museums')">Museums</button>
+                    <button class="btn btn-lg btn-warning shadow" onclick="filterMarkers('falls')">Falls</button>
+                    <button class="btn btn-lg btn-danger shadow" onclick="filterMarkers('other')">Other</button>
+                    <button class="btn btn-lg btn-secondary shadow" onclick="filterMarkers('all')">Show All</button>
+                </div>
+        
+
 </body>
 </html>
