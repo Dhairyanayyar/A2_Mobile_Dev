@@ -118,5 +118,78 @@ function getUserLocation() {
         });
     }
 }
+// Function to get directions between user's location and destination
+function getDirections() {
+    if (!currentLocation || !chosenDestination) {
+        alert("Please set both your location and a destination!");
+        return;
+    }
+
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer({ map: mapInstance });
+
+    directionsService.route(
+        {
+            origin: currentLocation,
+            destination: chosenDestination,
+            travelMode: "DRIVING"
+        },
+        (response, status) => {
+            if (status === "OK") {
+                directionsRenderer.setDirections(response);
+            } else {
+                alert("Directions request failed due to " + status);
+            }
+        }
+    );
+}
+
+// Function to add a new marker based on input address
+function addMarker() {
+    const address = document.getElementById("address").value;
+    const name = document.getElementById("markerName").value;
+    const category = document.getElementById("category").value;
+
+    if (!address || !name || !category) {
+        alert("Please fill out all fields!");
+        return;
+    }
+
+    const geocoder = new google.maps.Geocoder();
+
+    // Geocode the address and add marker
+    geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+            const newMarker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: mapInstance,
+                title: name,
+                category: category
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<h5>${name}</h5><p>Latitude: ${results[0].geometry.location.lat().toFixed(6)}, Longitude: ${results[0].geometry.location.lng().toFixed(6)}</p><button onclick="setDestination(${results[0].geometry.location.lat()}, ${results[0].geometry.location.lng()})">Get Directions</button>`
+            });
+
+            newMarker.addListener("click", () => {
+                infoWindow.open(mapInstance, newMarker);
+            });
+
+            allMarkers.push(newMarker);
+            addOptionToDropdown({
+                title: name,
+                latitude: results[0].geometry.location.lat(),
+                longitude: results[0].geometry.location.lng()
+            });
+
+            document.getElementById("address").value = "";
+            document.getElementById("markerName").value = "";
+            document.getElementById("category").value = "";
+        } else {
+            alert("Geocode failed due to: " + status);
+        }
+    });
+}
+
 
 
