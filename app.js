@@ -25,3 +25,26 @@ function initializeMap() {
     });
     placeMarkers();
 }
+// Function to add markers on map
+function placeMarkers() {
+    predefinedLocations.forEach(location => {
+        const marker = new google.maps.Marker({
+            position: { lat: location.latitude, lng: location.longitude },
+            map: mapInstance,
+            title: location.title,
+            category: location.type
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: `<h5>${location.title}</h5><p>Latitude: ${location.latitude.toFixed(6)}, Longitude: ${location.longitude.toFixed(6)}</p><button onclick="setDestination(${location.latitude}, ${location.longitude})">Get Directions</button>`
+        });
+
+        marker.addListener("click", () => {
+            infoWindow.open(mapInstance, marker);
+        });
+
+        allMarkers.push(marker);
+        addOptionToDropdown(location); // Add location to dropdown
+    });
+}
+
