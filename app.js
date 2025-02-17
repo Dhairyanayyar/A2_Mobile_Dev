@@ -48,3 +48,16 @@ function placeMarkers() {
     });
 }
 
+// Function to add option to the destination dropdown
+function addOptionToDropdown(location) {
+    const option = document.createElement("option");
+    option.value = `${location.latitude},${location.longitude}`;
+    option.textContent = location.title;
+    document.getElementById("destination").appendChild(option);
+}
+
+// Function to set the selected destination for directions
+function setDestination(latitude, longitude) {
+    chosenDestination = { lat: latitude, lng: longitude };
+    alert("Destination set! Now click 'Get Directions'.");
+}
