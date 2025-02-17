@@ -46,7 +46,22 @@
             <button class="btn btn-lg btn-danger rounded-pill shadow" onclick="getDirections()">Get Directions</button>
         </div>
 
-
+                <!-- Add New Marker Section -->
+                <div class="mt-5 text-center">
+                    <h3 class="mb-4">Add Your Own Location</h3>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <input id="address" type="text" class="form-control w-50 mx-2 mb-3" placeholder="Enter address">
+                        <input id="markerName" type="text" class="form-control w-50 mx-2 mb-3" placeholder="Enter marker name">
+                        <select id="category" class="form-select w-50 mx-2 mb-3">
+                            <option value="parks">Parks</option>
+                            <option value="museums">Museums</option>
+                            <option value="falls">Falls</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <button class="btn btn-lg btn-warning rounded-pill shadow mt-3" onclick="addMarker()">Add Location</button>
+                    </div>
+                </div>
+        
 
 </body>
 </html>
